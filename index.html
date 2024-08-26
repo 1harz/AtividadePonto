@@ -28,11 +28,13 @@
     </footer>
 
     <script>
+        //TODO - ADICIONAR UM 0 CASO O DIA SEJA MENOR QUE 10
         function atualizarDataHora() {
             const dataHora = new Date();
-            
-            let dataFormatada = dataHora.toLocaleDateString('pt-BR', { dateStyle: 'full' });
-            const horaFormatada = dataHora.toLocaleTimeString('pt-BR', { timeStyle: 'medium' });
+            const local = navigator.language || 'pt-BR'; //Aqui eu o sistema detecta a linguagem do navegador e muda os padroes de escrita de acordo com a nacionalidade do usuario.
+
+            let dataFormatada = dataHora.toLocaleDateString(local, { dateStyle: 'full' });
+            const horaFormatada = dataHora.toLocaleTimeString(local, { timeStyle: 'medium' });
 
             dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
             document.getElementById('data').textContent = dataFormatada;
