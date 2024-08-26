@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="cdn-icons-png.flaticon.com/512/2237/2237440.png">
+    <link rel="stylesheet" href="index.css">
+    <title>Controle de Ponto</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Bate-Ponto</h1>
+        </div>
+    </header>
+
+        <div class="data_hora">
+            <h1>Data e Hora Atual:</h1>
+            <p id="data"></p>
+            <p id="hora"></p>
+            <!--<p id="outra_data"></p>-->
+        </div>
+        <button class="botao_ponto">Registrar Ponto</button>
+
+    <footer>
+        <p>Desenvolvido por Raul Fragoso</p>
+        <a href="https://github.com/1harz" target="_blank"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/github-icon.svg" alt="Logo GitHub que redireciona para o perfil do autor"></a>
+    </footer>
+
+    <script>
+        function atualizarDataHora() {
+            const dataHora = new Date();
+            
+            let dataFormatada = dataHora.toLocaleDateString('pt-BR', { dateStyle: 'full' });
+            const horaFormatada = dataHora.toLocaleTimeString('pt-BR', { timeStyle: 'medium' });
+
+            dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+            document.getElementById('data').textContent = dataFormatada;
+            document.getElementById('hora').textContent = horaFormatada;
+        }
+
+        atualizarDataHora();
+
+        setInterval(atualizarDataHora, 1000);
+
+        function outraFormaHora() {
+            const date = new Date();
+            return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }
+
+        function outraFormaData() {
+            const date = new Date();
+            return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+        }
+        document.getElementById('outra_data').textContent = outraFormaData();
+    </script>
+</body>
+</html>
