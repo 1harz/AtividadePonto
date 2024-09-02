@@ -72,3 +72,114 @@ footer a img {
     width: 24px;
     height: 24px;
 }
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+dialog {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    max-width: 90%;
+    width: 400px;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog-header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: rgb(0, 110, 255);
+}
+
+.dialog-header button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    color: rgb(0, 110, 255);
+    cursor: pointer;
+}
+
+.dialog-content {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dialog-content p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: rgb(54, 54, 54);
+}
+
+.dialog-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: 2px solid rgb(0, 110, 255);
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(0, 110, 255);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dialog-content button:hover {
+    background-color: rgb(0, 110, 255);
+    color: white;
+}
+
+.animar-entrada {
+    animation: fadeIn 0.2s forwards;
+}
+
+.animar-saida {
+    animation: fadeOut 0.2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}

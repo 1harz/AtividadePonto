@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.png" type="cdn-icons-png.flaticon.com/512/2237/2237440.png">
+    <link rel="icon" href="cdn-icons-png.flaticon.com/512/2237/2237440.png" type="favicon.png">
     <link rel="stylesheet" href="index.css">
     <title>Controle de Ponto</title>
 </head>
@@ -14,13 +14,27 @@
         </div>
     </header>
 
-        <div class="data_hora">
-            <h1>Data e Hora Atual:</h1>
-            <p id="data"></p>
-            <p id="hora"></p>
-            <!--<p id="outra_data"></p>-->
+    <div class="data_hora">
+        <h1>Data e Hora Atual:</h1>
+        <p id="data"></p>
+        <p id="hora"></p>
+    </div>
+    <button class="botao_ponto">Registrar Ponto</button>
+
+    <div id="overlay"></div>    <!--Inicio aqui o fundo para quando o dialog for aberto e ter animacao-->
+
+    <dialog id="dialog">
+        <div class="dialog-header">
+            <h1>Data e Hora Atual</h1>
+            <button id="fechar">X</button>
         </div>
-        <button class="botao_ponto">Registrar Ponto</button>
+        <div class="dialog-content">
+            <p id="data-dialog"></p>
+            <p id="hora-dialog"></p>
+            <button id="entrada">Registrar Entrada</button>
+            <button id="saida">Registrar Saída</button>
+        </div>
+    </dialog>
 
     <footer>
         <p>Desenvolvido por Raul Fragoso</p>
@@ -28,10 +42,9 @@
     </footer>
 
     <script>
-        //TODO - ADICIONAR UM 0 CASO O DIA SEJA MENOR QUE 10
         function atualizarDataHora() {
             const dataHora = new Date();
-            const local = navigator.language || 'pt-BR'; //Aqui eu o sistema detecta a linguagem do navegador e muda os padroes de escrita de acordo com a nacionalidade do usuario.
+            const local = navigator.language;
 
             let dataFormatada = dataHora.toLocaleDateString(local, { dateStyle: 'full' });
             const horaFormatada = dataHora.toLocaleTimeString(local, { timeStyle: 'medium' });
@@ -39,22 +52,55 @@
             dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
             document.getElementById('data').textContent = dataFormatada;
             document.getElementById('hora').textContent = horaFormatada;
+
+            document.getElementById('data-dialog').textContent = dataFormatada;
+            document.getElementById('hora-dialog').textContent = horaFormatada;
         }
 
         atualizarDataHora();
-
         setInterval(atualizarDataHora, 1000);
 
-        function outraFormaHora() {
-            const date = new Date();
-            return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-        }
+        const dialog = document.getElementById('dialog');
+        const overlay = document.getElementById('overlay');
+        const botaoFechar = document.getElementById('fechar');
 
-        function outraFormaData() {
-            const date = new Date();
-            return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-        }
-        document.getElementById('outra_data').textContent = outraFormaData();
+        document.querySelector('.botao_ponto').addEventListener('click', () => {
+            atualizarDataHora();
+            overlay.classList.add('visible'); // Mostra o fundo depois de clicar no Registrar Ponto
+            dialog.showModal();
+            dialog.classList.add('animar-entrada');
+            dialog.classList.remove('animar-saida');
+        });
+
+        botaoFechar.addEventListener('click', () => {
+            dialog.classList.add('animar-saida');
+            overlay.classList.remove('visible'); // Tira o fundo quando fecha(clica fora, no X ou ESC)
+            setTimeout(() => dialog.close(), 500);
+        });
+
+        dialog.addEventListener('click', (event) => {
+            if (event.target === dialog) {
+                botaoFechar.click();
+            }
+        });
+
+        overlay.addEventListener('click', () => {
+            botaoFechar.click();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && dialog.open) {
+                botaoFechar.click();
+            }
+        });     //remove o fundo caso click ESC
+
+        document.getElementById('entrada').addEventListener('click', () => {
+            alert(`Entrada registrada em: ${document.getElementById('data-dialog').textContent} as ${document.getElementById('hora-dialog').textContent}`);
+        });
+
+        document.getElementById('saida').addEventListener('click', () => {
+            alert(`Saida registrada em: ${document.getElementById('data-dialog').textContent} as ${document.getElementById('hora-dialog').textContent}`);
+        });
     </script>
 </body>
 </html>
