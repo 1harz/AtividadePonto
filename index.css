@@ -131,13 +131,8 @@ dialog {
     text-align: center;
 }
 
-.dialog-content p {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: rgb(54, 54, 54);
-}
-
-.dialog-content button {
+/* Botão de Registrar Entrada */
+.dialog-content #entrada {
     margin-top: 15px;
     padding: 10px 20px;
     font-size: 1.1em;
@@ -149,8 +144,76 @@ dialog {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.dialog-content button:hover {
+.dialog-content #entrada:hover {
     background-color: rgb(0, 110, 255);
+    color: white;
+}
+
+.dialog-content #inicio-pausa{
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: 2px solid rgb(255, 200, 0);
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(255, 200, 0);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dialog-content #inicio-pausa:hover {
+    background-color: rgb(255, 200, 0);
+    color: white;
+}
+
+.dialog-content #fim-pausa{
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: 2px solid rgb(255, 200, 0);
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(255, 200, 0);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dialog-content #fim-pausa:hover {
+    background-color: rgb(255, 200, 0);
+    color: white;
+}
+
+.dialog-content #saida {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: 2px solid rgb(0, 110, 255);
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(0, 110, 255);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dialog-content #saida:hover {
+    background-color: rgb(0, 110, 255);
+    color: white;
+}
+
+.dialog-content #verificar {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: 2px solid rgb(255, 0, 0); /* Vermelho */
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dialog-content #verificar:hover {
+    background-color: rgb(255, 0, 0);
     color: white;
 }
 
@@ -182,4 +245,50 @@ dialog {
         opacity: 0;
         transform: scale(0.9);
     }
+}
+
+.notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    z-index: 9999;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+}
+
+.notification.show {
+    transform: translateY(0);
+}
+
+.notification.hidden {
+    transform: translateY(-100%);
+}
+
+.dialog-maior {
+    width: 60%;
+    max-width: 800px;
+    height: 50%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.dialog_maior-content {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 1.2em;
+    color: rgb(54, 54, 54);
+}
+
+.dialog-maior hr {
+    border: none;
+    border-top: 1px solid rgb(0, 110, 255);
+    margin: 20px 0;
 }

@@ -21,7 +21,7 @@
     </div>
     <button class="botao_ponto">Registrar Ponto</button>
 
-    <div id="overlay"></div> <!--Inicio aqui o fundo para quando o dialog for aberto e ter animacao-->
+    <div id="overlay"></div>
 
     <dialog id="dialog">
         <div class="dialog-header">
@@ -32,9 +32,28 @@
             <p id="data-dialog"></p>
             <p id="hora-dialog"></p>
             <button id="entrada">Registrar Entrada</button>
+            <button id="inicio-pausa">Início Pausa</button>
+            <button id="fim-pausa">Fim Pausa</button>
             <button id="saida">Registrar Saida</button>
+            <button id="verificar">Verificar Ponto</button>
         </div>
     </dialog>
+
+    <dialog id="dialog-verificar" class="dialog-maior">
+        <div class="dialog-header">
+            <h1>Consulta de Ponto Registrado</h1>
+            <button id="fechar-verificar">X</button>
+        </div>
+        <hr>
+        <div class="dialog_maior-content">
+            <p id="info-entrada"></p>
+            <p id="info-saida"></p>
+            <p id="info-pausa"></p>
+            <p id="tempo-total-pausa"></p>
+        </div>
+    </dialog>    
+
+    <div id="notification" class="notification hidden"></div>
 
     <footer>
         <p>Desenvolvido por Raul Fragoso</p>
@@ -43,6 +62,6 @@
         </a>
     </footer>
 
-    <script src="script.js"></script> <!-- Link para o arquivo JavaScript externo -->
+    <script src="script.js"></script>
 </body>
 </html>
