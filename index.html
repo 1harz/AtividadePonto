@@ -1,67 +1,51 @@
+<!--
+Alunos: Raul Falluh Fragoso de Mendonca e Rodrigo Lemos
+Matriculas: Raul - 22300926 | Rodrigo - 22301814
+Professor: Airton Bordin Junior
+Materia: Programação para Web - Turma A - 0724 - Matutino
+-->
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://www.sketchappsources.com/resources/source-image/ccalo_analog_clock.png" type="favicon.png">
-    <link rel="stylesheet" href="index.css">
-    <title>Controle de Ponto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Sistema de Controle de Ponto</title>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Bate-Ponto</h1>
-        </div>
-    </header>
+  <div id="notificacao" class="hidden"></div>
+  <header>
+    <h1>Sistema de Controle de Ponto</h1>
+    <p id="dataHoraAtual"></p>
+  </header>
+  
+  <main>
+    <section id="registro-ponto">
+      <h2>Registrar Ponto</h2>
+      <button id="pontoRegistroBtn">Registrar Entrada/Saída do Expediente</button>
+      <button id="entradaSaidaIntervaloBtn">Registrar Entrada/Saída do Intervalo</button>
 
-    <div class="data_hora">
-        <h1>Data e Hora Atual:</h1>
-        <p id="data"></p>
-        <p id="hora"></p>
-    </div>
-    <button class="botao_ponto">Registrar Ponto</button>
+      <h3>Registrar Ponto <span id="retroativo">Retroativo</span></h3>
+      <div id="registroRetroativo">
+        <input type="datetime-local" id="dataRetroativa">
 
-    <div id="overlay"></div>
+        <label for="justificativaInput">Justificativa de ausência:</label>
+        <textarea id="justificativaInput"></textarea>
 
-    <dialog id="dialog">
-        <div class="dialog-header">
-            <h1>Data e Hora Atual:</h1>
-            <button id="fechar">X</button>
-        </div>
-        <div class="dialog-content">
-            <p id="data-dialog"></p>
-            <p id="hora-dialog"></p>
-            <button id="entrada">Registrar Entrada</button>
-            <button id="inicio-pausa">Início Pausa</button>
-            <button id="fim-pausa">Fim Pausa</button>
-            <button id="saida">Registrar Saida</button>
-            <button id="verificar">Verificar Ponto</button>
-        </div>
-    </dialog>
+        <label for="justificativaArquivo">Upload de justificativa (opcional):</label>
+        <input type="file" id="justificativaArquivo">
 
-    <dialog id="dialog-verificar" class="dialog-maior">
-        <div class="dialog-header">
-            <h1>Consulta de Ponto Registrado</h1>
-            <button id="fechar-verificar">X</button>
-        </div>
-        <hr>
-        <div class="dialog_maior-content">
-            <p id="info-entrada"></p>
-            <p id="info-saida"></p>
-            <p id="info-pausa"></p>
-            <p id="tempo-total-pausa"></p>
-        </div>
-    </dialog>    
+        <label for="observacaoInput">Observação:</label>
+        <textarea id="observacaoInput"></textarea>
 
-    <div id="notification" class="notification hidden"></div>
+        <button id="pontoRetroativoBtn">Registrar Ponto Retroativo</button>
+      </div>
 
-    <footer>
-        <p>Desenvolvido por Raul Fragoso</p>
-        <a href="https://github.com/1harz" target="_blank">
-            <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/github-icon.svg" alt="Logo GitHub que redireciona para o perfil do autor">
-        </a>
-    </footer>
+      <button id="visualizarRelatorioBtn">Visualizar Relatório</button>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="controleDePonto.js"></script>
 </body>
 </html>

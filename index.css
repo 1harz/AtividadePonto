@@ -1,294 +1,172 @@
-html, body {
-    height: 100%;
+/* 
+Alunos: Raul Falluh Fragoso de Mendonca e Rodrigo Lemos
+Matriculas: Raul - 22300926 | Rodrigo - 22301814
+Professor: Airton Bordin Junior
+Materia: Programação para Web - Turma A - 0724 - Matutino
+*/
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
     display: flex;
     flex-direction: column;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-}
-
-.header-container {
-    background-color: rgb(0, 110, 255);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    border-bottom: 5px solid rgb(0, 90, 230);
-}
-
-.data_hora {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#data {
-    font-size: 2em;
-    color: rgb(0, 110, 255);
-}
-
-#hora {
-    font-size: 2em;
-    font-weight: bold;
-    color: rgb(54, 54, 54);
-}
-
-.botao_ponto {
-    display: block;
-    margin: 20px auto;
-    padding: 30px 130px;
-    font-size: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 2px solid rgb(0, 110, 255);
-    border-radius: 10px;
-    background-color: white;
-    color: rgb(0, 110, 255);
-    cursor: pointer;
-    transition: background-color 0.5s, color 0.5s;
-}
-
-.botao_ponto:hover {
-    background-color: rgb(0, 110, 255);
-    color: white;
-}
-
-footer {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: rgb(0, 110, 255);
-    color: white;
-    padding: 20px;
-    border-top: 5px solid rgb(0, 90, 230);
-    margin-top: auto;
+    text-align: center;
 }
 
-footer p {
-    margin: 0;
-}
-
-footer a img {
-    width: 24px;
-    height: 24px;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+header {
+    background-color: #2b80ff;
+    color: #fff;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
+    padding: 1.5rem;
+    text-align: center;
 }
 
-#overlay.visible {
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+header h1::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 4px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    margin: 0.5rem auto;
+}
+
+header p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+main {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+section#registro-ponto {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+h2::after, h3::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 3px;
+    background-color: #2b80ff;
+    border-radius: 4px;
+    margin: 0.5rem auto;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    position: relative;
+}
+
+label::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #2b80ff;
+    border-radius: 2px;
+    margin-top: 0.3rem;
+}
+
+button {
+    background-color: #2b80ff;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #0d6bf7;
+    color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+#visualizarRelatorioBtn {
+    background-color: #ff4d4d;
+}
+
+#visualizarRelatorioBtn:hover {
+    background-color: #ff3333;
+    color: #fff;
+    border: none;
+}
+
+input[type="datetime-local"],
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #2b80ff;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#notificacao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: rgba(0, 110, 255, 0.9);
+    color: white;
+    font-size: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1000;
+}
+
+#notificacao.mostrar {
     opacity: 1;
-    pointer-events: all;
-}
-
-dialog {
-    position: fixed;
-    transform: translate(-50%, -50%);
-    border: none;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    background-color: white;
-    max-width: 90%;
-    width: 400px;
-    z-index: 10;
-    opacity: 0;
-    animation: fadeIn 0.2s forwards;
-}
-
-.dialog-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dialog-header h1 {
-    font-size: 1.5em;
-    margin: 0;
-    color: rgb(0, 110, 255);
-}
-
-.dialog-header button {
-    background-color: transparent;
-    border: none;
-    font-size: 1.2em;
-    color: rgb(0, 110, 255);
-    cursor: pointer;
-}
-
-.dialog-content {
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Botão de Registrar Entrada */
-.dialog-content #entrada {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    border: 2px solid rgb(0, 110, 255);
-    border-radius: 5px;
-    background-color: white;
-    color: rgb(0, 110, 255);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.dialog-content #entrada:hover {
-    background-color: rgb(0, 110, 255);
-    color: white;
-}
-
-.dialog-content #inicio-pausa{
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    border: 2px solid rgb(255, 200, 0);
-    border-radius: 5px;
-    background-color: white;
-    color: rgb(255, 200, 0);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.dialog-content #inicio-pausa:hover {
-    background-color: rgb(255, 200, 0);
-    color: white;
-}
-
-.dialog-content #fim-pausa{
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    border: 2px solid rgb(255, 200, 0);
-    border-radius: 5px;
-    background-color: white;
-    color: rgb(255, 200, 0);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.dialog-content #fim-pausa:hover {
-    background-color: rgb(255, 200, 0);
-    color: white;
-}
-
-.dialog-content #saida {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    border: 2px solid rgb(0, 110, 255);
-    border-radius: 5px;
-    background-color: white;
-    color: rgb(0, 110, 255);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.dialog-content #saida:hover {
-    background-color: rgb(0, 110, 255);
-    color: white;
-}
-
-.dialog-content #verificar {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    border: 2px solid rgb(255, 0, 0); /* Vermelho */
-    border-radius: 5px;
-    background-color: white;
-    color: rgb(255, 0, 0);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.dialog-content #verificar:hover {
-    background-color: rgb(255, 0, 0);
-    color: white;
-}
-
-.animar-entrada {
-    animation: fadeIn 0.2s forwards;
-}
-
-.animar-saida {
-    animation: fadeOut 0.2s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-}
-
-.notification {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-size: 18px;
-    z-index: 9999;
-    transform: translateY(-100%);
-    transition: transform 0.5s ease;
-}
-
-.notification.show {
     transform: translateY(0);
 }
 
-.notification.hidden {
-    transform: translateY(-100%);
+input[type="file"] {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
-.dialog-maior {
-    width: 60%;
-    max-width: 800px;
-    height: 50%;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.dialog_maior-content {
-    margin-top: 80px;
-    text-align: center;
-    font-size: 1.2em;
-    color: rgb(54, 54, 54);
-}
-
-.dialog-maior hr {
-    border: none;
-    border-top: 1px solid rgb(0, 110, 255);
-    margin: 20px 0;
+a:hover {
+    text-decoration: underline;
 }

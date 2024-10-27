@@ -1,0 +1,56 @@
+<!--
+Alunos: Raul Falluh Fragoso de Mendonca e Rodrigo Lemos
+Matriculas: Raul - 22300926 | Rodrigo - 22301814
+Professor: Airton Bordin Junior
+Materia: Programação para Web - Turma A - 0724 - Matutino
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="relatorio.css">
+  <title>Relatório de Pontos</title>
+</head>
+<body>
+  <div id="notificacao" class="hidden"></div>
+  <header>
+    <h1>Relatório de Pontos</h1>
+  </header>
+
+  <main>
+    <section id="relatorio">
+      <h2>Relatório Completo</h2>
+      <h3>Periodo:</h3>
+      <div class="select-wrapper">
+        <select id="periodFilter">
+          <option value="all">Todos</option>
+          <option value="lastWeek">Última Semana</option>
+          <option value="lastMonth">Último Mês</option>
+        </select>
+      </div>      
+      <div id="relatorioContainer"></div>
+    </section>
+  </main>
+
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Editar Ponto</h2>
+      <label for="editDataHora">Data e Hora:</label>
+      <input type="datetime-local" id="editDataHora" required>
+
+      <label for="editJustificativa">Justificativa:</label>
+      <textarea id="editJustificativa" rows="3"></textarea>
+
+      <label for="editObservacao">Observação:</label>
+      <textarea id="editObservacao" rows="3"></textarea>
+
+      <button onclick="salvarEdicao()">Salvar</button>
+    </div>
+  </div>
+
+  <script src="relatorio.js"></script>
+</body>
+</html>

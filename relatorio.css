@@ -1,0 +1,275 @@
+/* 
+Alunos: Raul Falluh Fragoso de Mendonca e Rodrigo Lemos
+Matriculas: Raul - 22300926 | Rodrigo - 22301814
+Professor: Airton Bordin Junior
+Materia: Programação para Web - Turma A - 0724 - Matutino
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #0056b3;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 10px;
+}
+
+main {
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+.expediente-container {
+    background-color: #e6f0ff;
+    border: 1px solid #b3d1ff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #2b80ff;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin: 15px 0;
+}
+
+#periodFilter {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #0056b3;
+    font-size: 1rem;
+    appearance: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #007bff;
+    pointer-events: none;
+}
+
+#periodFilter:hover {
+    border-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#periodFilter:focus {
+    outline: none;
+    border-color: #003d80;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#notificacao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: rgba(0, 110, 255, 0.9);
+    color: white;
+    font-size: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1000;
+}
+
+#notificacao.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.expediente-container h3 {
+    font-size: 1.2em;
+    color: #003d80;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #b3d1ff;
+    padding-bottom: 5px;
+}
+
+.ponto-item {
+    background-color: #ffffff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.ponto-item:hover {
+    transform: scale(1.02);
+}
+
+.ponto-observacao {
+    border-color: #ff8c00;
+    background-color: #fff5e6;
+}
+
+.ponto-item p {
+    margin: 5px 0;
+    color: #0056b3;
+}
+
+.ponto-item p b {
+    color: #003d80;
+}
+
+.ponto-item a {
+    display: inline-block;
+    margin-top: 5px;
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ponto-item a:hover {
+    text-decoration: underline;
+}
+
+.ponto-item[style*="color: blue"] {
+    border-color: #b300ff;
+    color: #3333cc;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #003d80;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #f9f9f9;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #0056b3;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.modal-content button {
+    background-color: #0056b3;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #003d7a;
+}
