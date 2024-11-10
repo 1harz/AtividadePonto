@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const periodo = e.target.value;
     carregarPontos(periodo);
   });
+  document.getElementById("voltarBtn").addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
 });
 
 function carregarPontos(periodo = "all") {

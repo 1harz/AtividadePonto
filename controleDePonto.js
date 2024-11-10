@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const horaLocal = now.toLocaleString("pt-BR", { timeZoneName: "short" });
     document.getElementById("dataHoraAtual").textContent = horaLocal;
   };
+
+  updateDateTime();
   setInterval(updateDateTime, 1000);
 
   const mostrarNotificacao = (mensagem) => {
